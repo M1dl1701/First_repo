@@ -1,6 +1,10 @@
-import datetime
+from datetime import datetime
 
-now = datetime.datetime.today()
-date = datetime.datetime(year=2020, month=10, day=9)
-diff = now - date
-print(diff.days)
+def get_days_from_today(date):
+    try:
+        date = datetime.strptime(date, "%Y-%m-%d").date()
+        today = datetime.today().date()
+        return (today - date).days
+    except ValueError:
+        return None
+print(get_days_from_today("2020-10-09"))
